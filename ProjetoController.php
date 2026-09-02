@@ -31,6 +31,14 @@ switch ($acao) {
 
     // Cadastrar
     case "cadastar":
+        cadastrarProjeto($pdo, $_POST);
+
+        echo json_encode([
+            "sucesso" => true,
+            "mensagem" => "Projeto cadastrado com sucesso.",
+            "dados" => null
+        ]);
+        
         break;
 
     // Editar 

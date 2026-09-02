@@ -41,4 +41,35 @@ async function listarProjetos() {
         </tr>
       `;
   });
+
+}
+
+// Salvar projeto
+// Cadastrar ou editar CREATE/UPDATE
+async function salvarProjeto(event){
+  //Impede o recarregamento da página
+  event.preventDefault();
+
+  // Captura os dados do formulário
+  const formulario = document.getElementById("formProjeto");
+  const dados = new FormData(formulario);
+
+  // Envia os dados para o Controller
+  const resposta = await fetch("ProjetoController.php?acao=cadastrar", {
+    method: "POST",
+    body: dados,
+  });
+
+  // Recebe a resposta do PHP
+  const resultado = await resposta.json();
+
+  // Exibe a mensagem
+  alert(resultado.mensagem);
+
+  // Se salvou com sucesso...
+  if (resultado.sucesso == true) {
+
+    //Atualiza a tabela
+    listarProjetos();
+  }
 }

@@ -11,6 +11,17 @@ function listarProjetos($pdo)
     return $stmt->fetchAll();
 }
 
+// Cadastrar
+function cadastrarProjeto($pdo, $dados){
+    $stmt = $pdo->prepare("
+    INSERT INTO projetos (nome, duracao, responsavel)
+    VALUES (?, ?, ?)");
 
+    $stmt->execute([
+        $dados["nome"],
+        $dados["duracao"],
+        $dados["responsavel"]
+    ]);
+}
 
 ?>
