@@ -47,6 +47,8 @@ async function listarProjetos() {
 // Salvar projeto
 // Cadastrar ou editar CREATE/UPDATE
 async function salvarProjeto(event){
+
+
   //Impede o recarregamento da página
   event.preventDefault();
 
